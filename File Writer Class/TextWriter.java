@@ -1,27 +1,43 @@
 import java.io.*;
 import java.util.Scanner;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
-public class FileWriter 
+public class TextWriter 
 {
-	public static void write(File file,String text)
+	public static void write(File file,String text,boolean x)
 	{
 		//Write to a file
 		//###################################
-		try{
-		    PrintWriter writer = new PrintWriter(file);
-		    writer.println(text);
-		    writer.close();
-		} catch (IOException e) 
-		{}
+		if (x == false)
+		{
+			try{
+			    PrintWriter writer = new PrintWriter(new FileWriter(file,true));
+			    writer.append(text);
+			    writer.close();
+			} catch (IOException e) 
+			{}
+		}
+		else if (x == true)
+		{
+			file.delete();
+			try{
+			    PrintWriter writer = new PrintWriter(new FileWriter(file,true));
+			    writer.write(text);
+			    writer.close();
+			} catch (IOException e) 
+			{}
+		}
 		//###################################
 	}
+	//Not Working
 	public static void writeToLine(File file, String text, int line)
 	{
 		//Init Values
 		int line2 = 0;
         String before_text = "";
         String after_text = "";
-        
 		//Read from a file
 		//Grab all the lines before the specified line
 		//########################################################################
@@ -35,20 +51,19 @@ public class FileWriter
             while (input.hasNextLine()) 
             {
             	line2 ++;
-            	while (line2 < line)
+            	if (line2 < line)
             	{
-            		before_text += input.next();//Grab all the text before the line
+            		before_text += input.next() + "\n";//Grab all the text before the line
             	}
-            	if (line2 == line)
+            	else if (line2 == line)
             	{
             		line2++;
             		input.nextLine();
             	}
-            	while (line2 > line)
+            	else if (line2 > line)
             	{
-            		after_text += input.next();//Grab all the text after the line
+            		after_text += input.next() + "\n";//Grab all the text after the line
             	}
-            	
             }
             //##############################################
             input.close();
@@ -61,9 +76,9 @@ public class FileWriter
 		//###################################
 		try{
 			PrintWriter writer = new PrintWriter(file);
-			writer.println(before_text);
-			writer.println(text);
-			writer.println(after_text);
+			writer.write(before_text);
+			writer.write(text);
+			writer.write(after_text);
 			writer.close();
 		} catch (IOException e) 
 		{}
