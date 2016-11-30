@@ -78,16 +78,25 @@ public class Reservation
 				seats.add("2A");
 				*/
 				
+				//Creates a reservation folder if it doesn't exist. Kudos to Caleb for showing me this! :)
+				File folder = new File(System.getProperty("user.dir") + "/Reservations");
+				if (!folder.exists())
+				{
+					folder.mkdir();
+				}
+				
+				//Creates the string to write to file. \r\n is how new lines are created when writing to files.
 				String content = firstName + " " +lastName+ "\r\n" + address + "\r\n" + cardNum + "\r\n" + seats + "\r\n" + price;
 				//int res = 1010101;
 
-				File file = new File(System.getProperty("user.dir") + "/" + resID + ".txt");
+				File file = new File(System.getProperty("user.dir") + "/Reservations/" + resID + ".txt");
 
 				// If file doesn't exists, then create it
 				if (!file.exists()) {
 					file.createNewFile();
 				}
 
+				//Writes to the new reservation file and closes it, saving it to the Reservations folder.
 				FileWriter fw = new FileWriter(file.getAbsoluteFile());
 				BufferedWriter bw = new BufferedWriter(fw);
 				bw.write(content);
@@ -105,7 +114,7 @@ public class Reservation
 		{
 			try
 			{
-				scan = new Scanner(new File(System.getProperty("user.dir") + "/" + ID + ".txt"));
+				scan = new Scanner(new File(System.getProperty("user.dir") + "/Reservations/" + ID + ".txt"));
 			} catch (FileNotFoundException e)
 			{
 				System.out.println("Reservation failed to load: Doesn't exist.");
@@ -166,5 +175,11 @@ public class Reservation
 	public int getPrice()
 	{
 		return price;
+	}
+	
+	//Returns the reservation ID
+	public int getID()
+	{
+		return resID;
 	}
 }

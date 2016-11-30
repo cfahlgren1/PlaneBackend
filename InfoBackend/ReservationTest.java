@@ -13,17 +13,26 @@ public class ReservationTest
 		ArrayList<String> list = new ArrayList<String>();
 		
 		list.add("1B");
-		list.add("2A");
+		list.add("2D");
 		
-		System.out.println(System.getProperty("user.dir"));
-		Reservation reserve = new Reservation("Kappa", "Pride", "4242 Kappa Road, Hilliard, FL", 1234, list, 420);
+		Reservation reserve = new Reservation("Hugh", "Mungus", "4242 Kappa Road, Hilliard, FL", 1234, list, 420);
+		
+		System.out.println("Before loading:\n");
+		System.out.println(reserve.getID());
 		System.out.println(reserve.getName());
-		reserve.saveReservation();
-		reserve = reserve.loadReservation(80525);
-		System.out.println(reserve.getName());
-		System.out.println(reserve.getSeats());
 		System.out.println(reserve.getAddress());
 		System.out.println(reserve.getCard());
+		System.out.println(reserve.getSeats());
+		System.out.println(reserve.getPrice());
+		System.out.println();
+		reserve.saveReservation();
+		reserve = reserve.loadReservation(63389);
+		System.out.println("After loading:\n");
+		System.out.println(reserve.getID());
+		System.out.println(reserve.getName());
+		System.out.println(reserve.getAddress());
+		System.out.println(reserve.getCard());
+		System.out.println(reserve.getSeats());
 		System.out.println(reserve.getPrice());
 		
 	}
