@@ -166,20 +166,20 @@ public class Reservation
 	}
 
 	//Returns the credit card number of the customer on the current reservation
-	public int getCard()
+	public String getCard()
 	{
-		return cardNum;
+		return "" + cardNum;
 	}
 
 	//Returns the price of booking chosen seats for the customer on the current reservation
-	public int getPrice()
+	public String getPrice()
 	{
-		return price;
+		return "" + price;
 	}
 	
 	//Returns the reservation ID
-	public int getID()
+	public String getID()
 	{
-		return resID;
+		return "" + resID;
 	}
 }
