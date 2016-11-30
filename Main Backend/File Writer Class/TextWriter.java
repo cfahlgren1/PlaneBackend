@@ -8,6 +8,7 @@ public class TextWriter
 {
 	public static void write(File file,String text,boolean x)
 	{
+		//###################################
 		//Write to a file
 		//###################################
 		if (x == false)
@@ -31,7 +32,9 @@ public class TextWriter
 		}
 		//###################################
 	}
+	//###################################
 	//Not Working
+	//###################################
 	public static void writeToLine(File file, String text, int line)
 	{
 		//Init Values
