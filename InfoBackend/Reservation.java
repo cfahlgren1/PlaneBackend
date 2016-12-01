@@ -28,7 +28,7 @@ import java.util.*;
 public class Reservation
 {
 	private int resID;
-	private int price;
+	private double price;
 	private int cardNum;
 	private String firstName;
 	private String lastName;
@@ -39,7 +39,7 @@ public class Reservation
 	private Scanner scan;
 //General Constructor
 	public Reservation(String first, String last, String custAddress, int creditCardNum,
-			ArrayList<String> bookedSeats, int bookPrice) {
+			ArrayList<String> bookedSeats, double bookPrice) {
 		resID = rng.nextInt(90000) + 10000;
 		firstName = first;
 		lastName = last;
@@ -50,7 +50,7 @@ public class Reservation
 	}
 //Constructor for loading file
 	public Reservation(String first, String last, String custAddress, int creditCardNum,
-			ArrayList<String> bookedSeats, int bookPrice,
+			ArrayList<String> bookedSeats, double bookPrice,
 			int ID) {
 		resID = ID;
 		firstName = first;
@@ -137,7 +137,7 @@ public class Reservation
 			int newCardNum = scan.nextInt();
 			scan.nextLine();
 			
-			int newPrice = scan.nextInt();
+			double newPrice = scan.nextDouble();
 			
 			Reservation load = new Reservation(newFirst, newLast, newAddress, newCardNum, newSeats, newPrice, ID);
 			return load;
