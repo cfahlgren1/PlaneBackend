@@ -1,7 +1,7 @@
+[1B, 2A]				Seats Booked
 Kappa Pride				Name(First/Last)
 4242 Kappa Road, Hilliard, FL		Address
 1234					Credit Card Number
-[1B, 2A]				Seats Booked
 420					Reservation Price
 
 Extra Note: Reservation ID is saved as the name of the file.
