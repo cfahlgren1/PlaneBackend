@@ -14,12 +14,17 @@ public class WriteToFile
 {
 	public static void writeSeatsTaken(String resID, ArrayList list, int total_price)
 	{
+		File folder = new File(System.getProperty("user.dir") + "/Reservations/");
+		folder.mkdir();
 		File file = new File(System.getProperty("user.dir") + "/Reservations/" + resID + ".txt");
+		if (file.exists())
+			file.delete();
 		
 		try
 		{
 		    PrintWriter writer = new PrintWriter(new FileWriter(file,true));
 		    writer.append(String.valueOf(list) + "\tSeats Booked");
+		    writer.append("\r\n");
 		    writer.append(String.valueOf(total_price) + "\tReservation Price");
 		    writer.close();
 		    
@@ -47,9 +52,30 @@ public class WriteToFile
 		}
 		System.out.println(list);
 	}
+	public static int getPrice(ArrayList <String> list)
+	{
+		int total_price = 0;
+		for (int i = 0; i < list.size(); i++)
+		{
+			if(list.size() > 0)
+			{
+				if (list.get(i).substring(1,2).equals("1") || list.get(i).substring(1,2).equals("2"))
+					total_price += 507;
+				
+				else if (list.get(i).substring(1,2).equals("3") || list.get(i).substring(1,2).equals("4") || list.get(i).substring(1,2).equals("5") || list.get(i).substring(1,2).equals("6")|| list.get(i).substring(1,2).equals("7"))
+					total_price += 420;
+				
+				else if (list.get(i).substring(1,2).equals("8") || list.get(i).substring(1,2).equals("9") || list.get(i).substring(1,2).equals("10") || list.get(i).substring(1,2).equals("11")|| list.get(i).substring(1,2).equals("12")|| list.get(i).substring(1,2).equals("13"))
+					total_price += 250;
+					
+			}
+		}
+		return total_price;
+		
+	}
 	public static void main(String args[])
 	{
-		grabAllResID();
+		
 	}
 }
 	
