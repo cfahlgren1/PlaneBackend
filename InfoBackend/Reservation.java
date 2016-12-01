@@ -86,7 +86,7 @@ public class Reservation
 				}
 				
 				//Creates the string to write to file. \r\n is how new lines are created when writing to files.
-				String content = firstName + " " +lastName+ "\r\n" + address + "\r\n" + cardNum + "\r\n" + seats + "\r\n" + price;
+				String content = seats + "\r\n" + firstName + " " +lastName+ "\r\n" + address + "\r\n" + cardNum + "\r\n" +  price;
 				//int res = 1010101;
 
 				File file = new File(System.getProperty("user.dir") + "/Reservations/" + resID + ".txt");
@@ -120,20 +120,22 @@ public class Reservation
 				System.out.println("Reservation failed to load: Doesn't exist.");
 				return this;
 			}
-			String newFirst = scan.next(), newLast = scan.next(), lineClear = scan.nextLine(), newAddress = scan.nextLine();
-			int newCardNum = scan.nextInt();
-			ArrayList<String> newSeats = new ArrayList<String>();
-			scan.nextLine();
+			
 			Scanner seatScan = new Scanner(scan.nextLine());
 			String temp = seatScan.next();
+			ArrayList<String> newSeats = new ArrayList<String>();
 			
 			newSeats.add(temp.substring(1,3));
 			
 			while (seatScan.hasNext())
 			{
 				temp = seatScan.next();
-				newSeats.add(temp.substring(0,2));
+				newSeats.add(temp.substring(0,temp.length() - 1));
 			}
+			
+			String newFirst = scan.next(), newLast = scan.next(), lineClear = scan.nextLine(), newAddress = scan.nextLine();
+			int newCardNum = scan.nextInt();
+			scan.nextLine();
 			
 			int newPrice = scan.nextInt();
 			
@@ -141,7 +143,7 @@ public class Reservation
 			return load;
 			
 		}
-//Cancels out the creation of a flight
+//Cancels out the creation of a flight(For Jacob's use)
 	public void cancel()
 		{
 
