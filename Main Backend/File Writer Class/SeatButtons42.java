@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 import javax.swing.*;
@@ -25,6 +26,8 @@ public class SeatButtons4 extends JPanel
 			
 			static WriteToFile write = new WriteToFile();
 			
+			static Random rng = new Random();
+			int resID = rng.nextInt(90000) + 10000;
 			
 			public static void ReadSeats1()
 			{
@@ -375,7 +378,7 @@ public class SeatButtons4 extends JPanel
 						group.clearSelection();
 						list.add(getSeat());
 						total_price = write.getPrice(list);
-						write.writeSeatsTaken("24597", list, total_price);
+						write.writeSeatsTaken(String.valueOf(resID), list, total_price);
 					}
 				else 
 					{
