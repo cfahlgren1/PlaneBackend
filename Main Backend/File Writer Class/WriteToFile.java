@@ -63,18 +63,15 @@ public class WriteToFile
 			{
 				if (list.get(i).substring(1,2).equals("8") || list.get(i).substring(1,2).equals("9") || (list.get(i).length()>2&&(list.get(i).substring(1,3).equals("10") || list.get(i).substring(1,3).equals("11")|| list.get(i).substring(1,3).equals("12")|| list.get(i).substring(1,3).equals("13"))))
 					{
-						System.out.println(list.get(i).substring(1,2));
 						total_price += 250;
 					}
 				else if (list.get(i).substring(1,2).equals("1") || list.get(i).substring(1,2).equals("2"))
 					{
-						System.out.println(list.get(i).substring(1,2));
 						total_price += 507;
 					}
 				
 				else if (list.get(i).substring(1,2).equals("3") || list.get(i).substring(1,2).equals("4") || list.get(i).substring(1,2).equals("5") || list.get(i).substring(1,2).equals("6")|| list.get(i).substring(1,2).equals("7"))
 					{
-						System.out.println(list.get(i).substring(1,2));
 						total_price += 420;
 					}
 				
