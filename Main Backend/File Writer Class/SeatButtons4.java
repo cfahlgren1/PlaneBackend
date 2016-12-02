@@ -33,6 +33,7 @@ public class SeatButtons4  extends JPanel
 			//Grab existing reserved seats
 			//#############################################
 			ArrayList <String> seats_taken = write.grabAllResID();
+			ArrayList <String> seats_taken2 = new ArrayList <String> ();
 			File folder = new File(System.getProperty("user.dir") + "/Reservations/");
 			
 			if (folder.exists())
@@ -43,12 +44,14 @@ public class SeatButtons4  extends JPanel
 				{
 					
 					File file = new File(System.getProperty("user.dir") + "/Reservations/" + seats_taken.get(x) + ".txt");
+					s+= " ";
 					if (file.exists())
 					{
 						try {
 				            Scanner input = new Scanner(System.in); 
 
 				            input = new Scanner(file);
+				            input.useDelimiter("]");
 
 				            while (input.hasNextLine()) 
 				            {	
@@ -63,8 +66,15 @@ public class SeatButtons4  extends JPanel
 					}
 					
 				}
-				System.out.println(s);
+				s = s.replace("[", "");
+				s = s.replace(",", "");
+				Scanner scan = new Scanner (s);
 				
+				while(scan.hasNext())
+				{
+					seats_taken2.add(scan.next());
+				}
+				System.out.println(seats_taken2);
 			}	
 			//#############################################
 		}
