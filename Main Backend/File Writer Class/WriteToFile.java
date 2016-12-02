@@ -31,7 +31,7 @@ public class WriteToFile
 		} catch (IOException e) 
 		{}
 	}
-	public static void grabAllResID()
+	public static ArrayList <String> grabAllResID()
 	{
 		File folder = new File(System.getProperty("user.dir") + "/Reservations/");
 		File[] listOfFiles = folder.listFiles();
@@ -46,11 +46,11 @@ public class WriteToFile
 		        list.add(listOfFiles[i].getName().substring(0,listOfFiles[i].getName().length()-4));
 		      }
 		      else if (listOfFiles[i].isDirectory()) {
-		        System.out.println("Directory " + listOfFiles[i].getName());
+		        System.out.println(listOfFiles[i].getName());
 		      }
 		    }
 		}
-		System.out.println(list);
+		return list;
 	}
 	public static int getPrice(ArrayList <String> list)
 	{
@@ -67,16 +67,11 @@ public class WriteToFile
 				
 				else if (list.get(i).substring(1,2).equals("8") || list.get(i).substring(1,2).equals("9") || list.get(i).substring(1,2).equals("10") || list.get(i).substring(1,2).equals("11")|| list.get(i).substring(1,2).equals("12")|| list.get(i).substring(1,2).equals("13"))
 					total_price += 250;
-					
 			}
 		}
 		return total_price;
-		
 	}
-	public static void main(String args[])
-	{
-		
-	}
+
 }
 	
 

@@ -9,20 +9,66 @@
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
 
 import javax.swing.*;
 
 public class SeatButtons4  extends JPanel 
 	{
 		//Array List to store seats
-			static ArrayList <String> list = new ArrayList <String>();
+		static ArrayList <String> list = new ArrayList <String>();
 		
 		//Total Price of the seats
-			static int total_price = 0;
+		static int total_price = 0;
+		
+		static WriteToFile write = new WriteToFile();
+		
+		
+		public static void ReadSeats1()
+		{
+			//#############################################
+			//Grab existing reserved seats
+			//#############################################
+			ArrayList <String> seats_taken = write.grabAllResID();
+			File folder = new File(System.getProperty("user.dir") + "/Reservations/");
 			
-			
-			
+			if (folder.exists())
+			{
+				//Loop through the different file 
+				String s = "";
+				for (int x = 0; x < seats_taken.size(); x++)
+				{
+					
+					File file = new File(System.getProperty("user.dir") + "/Reservations/" + seats_taken.get(x) + ".txt");
+					if (file.exists())
+					{
+						try {
+				            Scanner input = new Scanner(System.in); 
+
+				            input = new Scanner(file);
+
+				            while (input.hasNextLine()) 
+				            {	
+				            	s += input.next();
+				            	break;
+				            }
+				            input.close();
+
+				        } catch (Exception ex) {
+				            ex.printStackTrace();
+				        }
+					}
+					
+				}
+				System.out.println(s);
+				
+			}	
+			//#############################################
+		}
+		
 		JRadioButton A1 = new JRadioButton(), B1 = new JRadioButton(),
 				C1 = new JRadioButton(), D1 = new JRadioButton(),
 				E1 = new JRadioButton(), F1 = new JRadioButton();
@@ -273,15 +319,13 @@ public class SeatButtons4  extends JPanel
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-
+				
 				JRadioButton myButton = findSeat();
 				
 				String question = "Is seat " + getSeat() + " the one you want?";
 				
 				int confirm = JOptionPane.showConfirmDialog(null,
 						question);
-				
-				WriteToFile write = new WriteToFile();
 				
 				if (confirm == JOptionPane.YES_OPTION)
 					{
@@ -290,11 +334,8 @@ public class SeatButtons4  extends JPanel
 						
 						list.add(getSeat());
 						total_price = write.getPrice(list);
-						
 						write.writeSeatsTaken("24597", list, total_price);
 					
-						
-						
 						group.clearSelection();
 					}
 				else 
@@ -365,6 +406,7 @@ public class SeatButtons4  extends JPanel
 						public void run()
 							{
 								createAndShowGUI();
+								ReadSeats1();
 							}
 					}
 				);
