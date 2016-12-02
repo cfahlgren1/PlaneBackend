@@ -1,4 +1,4 @@
-package plane;
+package finalPlane;
 
 //**********************************************************************************************************
 //SeatButtons4.java     Name: Raymond Pace, Nisha Patel, Chandler Jones, Payton Dinwiddie     Date: 11/30/16
