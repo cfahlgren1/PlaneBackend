@@ -1,4 +1,4 @@
-
+package planeFinal;
 //**********************************************************************************************************
 //SeatButtons4.java     Name: Raymond Pace, Nisha Patel, Chandler Jones, Payton Dinwiddie     Date: 11/30/16
 //
@@ -11,11 +11,12 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 import javax.swing.*;
 
-public class SeatButtons4 extends JPanel 
+public class SeatButtons42 extends JPanel 
 	{
 			//Array List to store seats
 			static ArrayList <String> list = new ArrayList <String>();
@@ -25,6 +26,8 @@ public class SeatButtons4 extends JPanel
 			
 			static WriteToFile write = new WriteToFile();
 			
+			static Random rng = new Random();
+			int resID = rng.nextInt(90000) + 10000;
 			
 			public static void ReadSeats1()
 			{
@@ -221,7 +224,7 @@ public class SeatButtons4 extends JPanel
 		
 		ButtonGroup group = new ButtonGroup();
 		
-		public SeatButtons4() {
+		public SeatButtons42() {
 			super(new BorderLayout());
 
 			checkout.addActionListener(co); 
@@ -375,7 +378,7 @@ public class SeatButtons4 extends JPanel
 						group.clearSelection();
 						list.add(getSeat());
 						total_price = write.getPrice(list);
-						write.writeSeatsTaken("24597", list, total_price);
+						write.writeSeatsTaken(String.valueOf(resID), list, total_price);
 					}
 				else 
 					{
@@ -433,8 +436,17 @@ public class SeatButtons4 extends JPanel
 						);
 					}
 					//send to info screen
-				else
+				else if (this==rst)
+				{
+					File file = new File(System.getProperty("user.dir") + "/Reservations/" + resID + ".txt");
+					file.delete();
 					System.out.println("Reset");
+				}
+				else
+					{
+						File file = new File(System.getProperty("user.dir") + "/Reservations/" + resID + ".txt");
+						file.delete();
+					}
 					//release seats & reset
 			}
 		}
@@ -451,7 +463,7 @@ public class SeatButtons4 extends JPanel
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 				// Create and set up the content pane.
-				JComponent newContentPane = new SeatButtons4();
+				JComponent newContentPane = new SeatButtons42();
 				newContentPane.setOpaque(true); // content panes must be opaque
 				frame.setContentPane(newContentPane);
 
