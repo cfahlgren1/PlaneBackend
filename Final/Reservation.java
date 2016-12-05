@@ -1,4 +1,4 @@
-package planeFinal;
+package Chapter_6;
 /*
  * Reservation.java			Authors: Austin Davis, Sebastian Kromann, Jacob Godsave, and Dylan Sisai
  * 
@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 
 public class Reservation
@@ -79,28 +80,31 @@ public class Reservation
 				*/
 				
 				//Creates a reservation folder if it doesn't exist. Kudos to Caleb for showing me this! :)
-				File folder = new File(System.getProperty("user.dir") + "/Reservations");
+				File folder = new File(System.getProperty("user.dir") + "\\Reservations");
+				System.out.println(System.getProperty("user.dir") + "\\Reservations");
 				if (!folder.exists())
 				{
 					folder.mkdir();
 				}
 				
 				//Creates the string to write to file. \r\n is how new lines are created when writing to files.
-				String content = seats + "\r\n" + firstName + " " +lastName+ "\r\n" + address + "\r\n" + cardNum + "\r\n" +  price;
+				String content = "\r\nName: " + firstName + " " +lastName+ "\r\nAddress: " + address + "\r\nCard Number: " + cardNum;
 				//int res = 1010101;
 
-				File file = new File(System.getProperty("user.dir") + "/Reservations/" + resID + ".txt");
+				File file = new File(System.getProperty("user.dir") + "\\Reservations\\" + resID + ".txt");
 
 				// If file doesn't exists, then create it
 				if (!file.exists()) {
 					file.createNewFile();
 				}
-
+				 PrintWriter writer = new PrintWriter(new FileWriter(file,true));
+				   writer.append(content);
+				    writer.close();
 				//Writes to the new reservation file and closes it, saving it to the Reservations folder.
-				FileWriter fw = new FileWriter(file.getAbsoluteFile());
-				BufferedWriter bw = new BufferedWriter(fw);
-				bw.write(content);
-				bw.close();
+				//FileWriter fw = new FileWriter(file.getAbsoluteFile());
+				//BufferedWriter bw = new BufferedWriter(fw);
+				//bw.write(content);
+				//bw.close();
 
 				System.out.println("Reservation Created");
 
