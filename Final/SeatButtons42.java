@@ -1,5 +1,3 @@
-package planeFinal;
-//**********************************************************************************************************
 //SeatButtons4.java     Name: Raymond Pace, Nisha Patel, Chandler Jones, Payton Dinwiddie     Date: 11/30/16
 //
 //Class Group Project---Main GUI Display Team
@@ -464,7 +462,24 @@ public class SeatButtons42 extends JPanel
 				
 		private static void createAndShowGUI()
 			{
-				
+
+			ArrayList <String> seats_taken = write.grabAllResID();
+			boolean duplicate = false;
+			while(true)
+			{
+				for(int i = 0; i < seats_taken.size(); i++)
+				{
+					if (resID == Integer.parseInt(seats_taken.get(i)))
+						duplicate = true;
+				}
+				if (duplicate == true)
+				{
+					resID = rng.nextInt(90000) + 10000;
+				}
+				else	 
+					break;
+			}
+			
 				JFrame frame = new JFrame("Flight Reservation");
 				
 				frame.addWindowListener(new java.awt.event.WindowAdapter() 
