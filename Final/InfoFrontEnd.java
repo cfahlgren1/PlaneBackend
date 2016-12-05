@@ -1,4 +1,4 @@
-package planeFinal;
+package Chapter_6;
 //------------------------------------------------------------------------------------
 //	Authors:		Joshua Lindberg, Ian Stacey, Jake Hollis, Jacob Waters
 //	Program Name:	InfoFrontEnd
@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 import javax.swing.*;
 
-public class InfoFrontEnd extends JPanel implements ActionListener
+public class InfoFrontEnd extends JPanel
 {
 	// Class level variables
 	static ArrayList<String> arraySeat = new ArrayList<String>();
@@ -100,6 +100,7 @@ public class InfoFrontEnd extends JPanel implements ActionListener
 		seats = textLabelSeats.getText();
 		credit = textLabelCredit.getText();
 		Reservation custReservation = new Reservation(fName, lName, address, Integer.parseInt(credit), arraySeat, Double.parseDouble(price), SeatButtons42.resID);
+		custReservation.saveReservation();
 
 	}
 	// Creates a Submit Button
@@ -109,7 +110,7 @@ public class InfoFrontEnd extends JPanel implements ActionListener
 		JButton submitButton = new JButton("Submit");
 		submitButton.setBackground(Color.red);
 		submitButton.setForeground(Color.white);
-		submitButton.addActionListener(this);
+		submitButton.addActionListener(new Saving());
 		pan.add(submitButton);
 		return pan;
 	}
@@ -123,12 +124,15 @@ public class InfoFrontEnd extends JPanel implements ActionListener
 		}
 	}
 	// runs the save info method
-	public void actionPerformed(ActionEvent e)
+	public class Saving implements ActionListener
 	{
-		actionSaveInfo();
-		//actionSendInfo();
+		public void actionPerformed(ActionEvent e)
+		{
+			actionSaveInfo();
+			System.exit(0);;
+			//actionSendInfo();
+		}
 	}
-	
 	public ArrayList<String> getSeats()
 	{
 		return arraySeat;
