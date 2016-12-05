@@ -29,6 +29,7 @@ public class SeatButtons42 extends JPanel
 			static Random rng = new Random();
 			static int resID = rng.nextInt(90000) + 10000;
 			static ArrayList <String> unavailableSeats;
+			static File sfile = new File (System.getProperty("user.dir") + "/Reservations/" + resID + ".txt");
 			
 			public static void ReadSeats1()
 			{
@@ -383,7 +384,7 @@ public class SeatButtons42 extends JPanel
 						total_price = write.getPrice(list);
 						write.writeSeatsTaken(String.valueOf(resID), list, total_price);
 					}
-				else 
+				else
 					{
 						group.clearSelection();
 					}
@@ -441,14 +442,14 @@ public class SeatButtons42 extends JPanel
 					//send to info screen
 				else if (this==rst)
 				{
-					File file = new File(System.getProperty("user.dir") + "/Reservations/" + resID + ".txt");
-					file.delete();
-					System.out.println("Reset");
+					sfile.delete();
+					System.exit(0);
 				}
 				else
 					{
-						File file = new File(System.getProperty("user.dir") + "/Reservations/" + resID + ".txt");
-						file.delete();
+						
+						sfile.delete();
+						System.exit(0);
 					}
 					//release seats & reset
 			}
@@ -459,13 +460,30 @@ public class SeatButtons42 extends JPanel
 		 * Create the GUI and show it. For thread safety, this method should be
 		 * invoked from the event-dispatching thread.
 		 */
+		
+				
 		private static void createAndShowGUI()
 			{
 				
-				ArrayList <String> seats_taken = write.grabAllResID();
-				// Create and set up the window.
 				JFrame frame = new JFrame("Flight Reservation");
-				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				
+				frame.addWindowListener(new java.awt.event.WindowAdapter() 
+					{
+						public void windowClosing(java.awt.event.WindowEvent e) 
+							{
+								sfile.delete();
+								System.exit(0);
+							}
+					}
+				);
+				//ArrayList <String> seats_taken = write.grabAllResID();
+				
+				
+				// Create and set up the window.
+				
+				frame.setDefaultCloseOperation(close());
+				
+				ReadSeats1();
 				if (unavailableSeats!=null)
 					for (int i = 0; i < unavailableSeats.size(); i++)
 					{
@@ -481,6 +499,8 @@ public class SeatButtons42 extends JPanel
 					}
 				
 				
+				
+				
 				// Create and set up the content pane.
 				JComponent newContentPane = new SeatButtons42();
 				newContentPane.setOpaque(true); // content panes must be opaque
@@ -490,8 +510,16 @@ public class SeatButtons42 extends JPanel
 				frame.pack();
 				frame.setVisible(true);
 			}
+		
+		
+		public static int close()
+		{
+			sfile.delete();
+			
+			return 0;
+		}
 
-		public static void main(String[] args)
+		public static void main (String[] args)
 			{
 				// Schedule a job for the event-dispatching thread:
 				// creating and showing this application's GUI.
