@@ -1,3 +1,4 @@
+package planeFinal;
 //SeatButtons4.java     Name: Raymond Pace, Nisha Patel, Chandler Jones, Payton Dinwiddie     Date: 11/30/16
 //
 //Class Group Project---Main GUI Display Team
@@ -470,6 +471,8 @@ public class SeatButtons42 extends JPanel
 							{
 								public void run()
 									{
+										reset.setEnabled(false);
+										checkout.setEnabled(false);
 										InfoFrontEnd.toInfo();
 									}
 							}
@@ -478,9 +481,8 @@ public class SeatButtons42 extends JPanel
 					//send to info screen
 				else if (this==rst)
 				{
-					sfile.delete();
-					frame.dispose();
-					createAndShowGUI();
+					
+					reset();
 				}
 				else
 					{
@@ -498,10 +500,10 @@ public class SeatButtons42 extends JPanel
 		 * invoked from the event-dispatching thread.
 		 */
 		
-				
-		private static void createAndShowGUI()
+		
+		public static void createAndShowGUI()
 			{
-
+			
 			ArrayList <String> seats_taken = write.grabAllResID();
 			boolean duplicate = false;
 			while(true)
@@ -518,8 +520,7 @@ public class SeatButtons42 extends JPanel
 				else	 
 					break;
 			}
-			
-				JFrame frame = new JFrame("Flight Reservation");
+			JFrame frame = new JFrame("Flight Reservation");
 				
 				frame.addWindowListener(new java.awt.event.WindowAdapter() 
 					{
@@ -535,7 +536,7 @@ public class SeatButtons42 extends JPanel
 				
 				// Create and set up the window.
 				
-				frame.setDefaultCloseOperation(close());
+				//frame.setDefaultCloseOperation(close());
 				
 				ReadSeats1();
 				if (unavailableSeats!=null)
@@ -566,12 +567,24 @@ public class SeatButtons42 extends JPanel
 			}
 		
 		
-		public static int close()
-		{
-			sfile.delete();
-			
-			return 0;
-		}
+		public void reset()
+			{
+				ArrayList <String> arr = InfoFrontEnd.seatsChosen();
+				for (int i = 0; i < arr.size(); i++)
+					{
+						for (int x = 0; x < allSeats.length; x++)
+							{
+								for (int y = 0; y < allSeats[0].length; y++)
+									{
+										if (arr.get(i).equals(allSeats[x][y]))
+											seats[x][y].setEnabled(true);
+												
+									}
+							}
+					}
+				sfile.delete();
+				list = new ArrayList <String>();
+			}
 
 		public static void main (String[] args)
 			{
