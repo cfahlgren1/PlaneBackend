@@ -1,10 +1,4 @@
-package planeFinal;
-//SeatButtons4.java     Name: Raymond Pace, Nisha Patel, Chandler Jones, Payton Dinwiddie     Date: 11/30/16
-//
-//Class Group Project---Main GUI Display Team
-//
-//individuals can book a seat on a plane to their choice in travel destinations
-//**********************************************************************************************************
+
 
 import java.awt.*;
 import java.awt.event.*;
@@ -15,7 +9,7 @@ import java.util.Scanner;
 
 import javax.swing.*;
 
-public class SeatButtons42 extends JPanel 
+public class SeatButtonsFinal extends JPanel 
 	{
 			//Array List to store seats
 			static ArrayList <String> list = new ArrayList <String>();
@@ -234,7 +228,7 @@ public class SeatButtons42 extends JPanel
 		//creates a group to put all of the seats in so that the user can choose only one seat at a time
 		ButtonGroup group = new ButtonGroup();
 		
-		public SeatButtons42() {
+		public SeatButtonsFinal() {
 			super(new BorderLayout());
 
 			checkout.addActionListener(co); 
@@ -556,7 +550,7 @@ public class SeatButtons42 extends JPanel
 				
 				
 				// Create and set up the content pane.
-				JComponent newContentPane = new SeatButtons42();
+				JComponent newContentPane = new SeatButtonsFinal();
 				newContentPane.setOpaque(true); // content panes must be opaque
 				frame.setContentPane(newContentPane);
 
