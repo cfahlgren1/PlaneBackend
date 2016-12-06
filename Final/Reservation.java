@@ -1,21 +1,4 @@
-package Chapter_6;
-/*
- * Reservation.java			Authors: Austin Davis, Sebastian Kromann, Jacob Godsave, and Dylan Sisai
- * 
- * A class which handles reservations for plane bookings, holding various variables, such as an ID, booking price, and credit card number.
- * 
- * Variable List:
- * 
- * resID - Handles the Reservation ID (int)
- * price - The price for booking seats chosen by the customer (int)
- * cardNum - The credit card number specified by the customer (int)
- * firstName - The customer's specified first name (String)
- * lastName - The customer's specified last name (String)
- * address - The customer's specified address (String)
- * seats - Handles all of the seats the customer has chosen to book (ArrayList<String>)
- * rng - Handles generating reservation IDs (Random)
- * scan - Handles the scanning of files when loading a reservation (Scanner)
- */
+package com.fall2016.planeProjectFinal;
 
 
 import java.io.BufferedWriter;
@@ -81,7 +64,7 @@ public class Reservation
 				
 				//Creates a reservation folder if it doesn't exist. Kudos to Caleb for showing me this! :)
 				File folder = new File(System.getProperty("user.dir") + "\\Reservations");
-				System.out.println(System.getProperty("user.dir") + "\\Reservations");
+				//System.out.println(System.getProperty("user.dir") + "\\Reservations");
 				if (!folder.exists())
 				{
 					folder.mkdir();
@@ -126,6 +109,7 @@ public class Reservation
 			}
 			
 			Scanner seatScan = new Scanner(scan.nextLine());
+			
 			String temp = seatScan.next();
 			ArrayList<String> newSeats = new ArrayList<String>();
 			
@@ -135,13 +119,24 @@ public class Reservation
 			{
 				temp = seatScan.next();
 				newSeats.add(temp.substring(0,temp.length() - 1));
+				if (temp.indexOf("]") > 0)
+				{
+					while (seatScan.hasNext())
+					{
+						
+					}
+				}
 			}
 			
-			String newFirst = scan.next(), newLast = scan.next(), lineClear = scan.nextLine(), newAddress = scan.nextLine();
-			int newCardNum = scan.nextInt();
-			scan.nextLine();
-			
 			double newPrice = scan.nextDouble();
+			scan.nextLine();
+			scan.next();
+			String newFirst = scan.next(), newLast = scan.next(), lineClear = scan.nextLine(), lineClear2 = scan.next(), newAddress = scan.nextLine();
+			scan.nextLine();
+			int newCardNum = scan.nextInt();
+			
+			
+			
 			
 			Reservation load = new Reservation(newFirst, newLast, newAddress, newCardNum, newSeats, newPrice, ID);
 			return load;
