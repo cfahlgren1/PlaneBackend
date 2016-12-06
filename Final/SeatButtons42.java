@@ -77,7 +77,7 @@ public class SeatButtons42 extends JPanel
 					{
 						seats_taken2.add(scan.next());
 					}
-					System.out.println(seats_taken2);
+					
 				}	
 				//#############################################
 				unavailableSeats = seats_taken2;
@@ -412,7 +412,7 @@ public class SeatButtons42 extends JPanel
 				int confirm = JOptionPane.showConfirmDialog(null,
 						question);
 				
-				
+				//confirms selection and disables if yes
 				if (confirm == JOptionPane.YES_OPTION)
 					{
 						myButton.setEnabled(false);
@@ -426,7 +426,7 @@ public class SeatButtons42 extends JPanel
 						group.clearSelection();
 					}
 			}
-			
+			//locates the button that sent the event
 			public JRadioButton findSeat()
 			{
 				for (int row = 0; row<listeners.length; row++)
@@ -466,7 +466,6 @@ public class SeatButtons42 extends JPanel
 			{
 				if (this==co)
 					{
-						System.out.println("Checkout");
 						javax.swing.SwingUtilities.invokeLater(new Runnable() 
 							{
 								public void run()
