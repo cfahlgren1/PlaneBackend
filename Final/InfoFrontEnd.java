@@ -214,8 +214,16 @@ public class InfoFrontEnd extends JPanel
 		{
 			// Create and set up the window.
 			JFrame info = new JFrame("Passenger Info");
-			info.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+			
+			info.addWindowListener(new java.awt.event.WindowAdapter() 
+				{
+					public void windowClosing(java.awt.event.WindowEvent e) 
+						{
+							SeatButtons42.sfile.delete();
+							System.exit(0);
+						}
+				}
+			);
 			// Create and set up the content pane.
 			JComponent myFrontEnd = new InfoFrontEnd();
 			myFrontEnd.setOpaque(true); // content panes must be opaque

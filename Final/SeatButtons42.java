@@ -81,7 +81,8 @@ public class SeatButtons42 extends JPanel
 				//#############################################
 				unavailableSeats = seats_taken2;
 			}
-			
+		
+		//creates each seat as a JRadioButton	
 		static JRadioButton A1 = new JRadioButton(), B1 = new JRadioButton(),
 				C1 = new JRadioButton(), D1 = new JRadioButton(),
 				E1 = new JRadioButton(), F1 = new JRadioButton();
@@ -134,6 +135,7 @@ public class SeatButtons42 extends JPanel
 				C13 = new JRadioButton(), D13 = new JRadioButton(),
 				E13 = new JRadioButton(), F13 = new JRadioButton();
 
+		//puts all of the seats into an array list
 		static JRadioButton[][] seats = { { A1, B1, C1, D1, E1, F1 },
 				{ A2, B2, C2, D2, E2, F2 }, { A3, B3, C3, D3, E3, F3 },
 				{ A4, B4, C4, D4, E4, F4 }, { A5, B5, C5, D5, E5, F5 },
@@ -144,13 +146,16 @@ public class SeatButtons42 extends JPanel
 				{ A12, B12, C12, D12, E12, F12 },
 				{ A13, B13, C13, D13, E13, F13 } };
 		
+		//creates JButtons for Checkout, Reset, and Exit for the user to interact with
 		JButton checkout = new JButton("Checkout"), reset = new JButton("Reset"), exit = new JButton("Exit");
 		ButtonPressed co = new ButtonPressed(), rst = new ButtonPressed(), ext = new ButtonPressed();
 		
-		
+		//creates labels of space to place before and after the Checkout, Reset, and Exit buttons
 		JLabel last1 = new JLabel(""), last2 = new JLabel(""), last3 = new JLabel(""), last4 = new JLabel(""), last5 = new JLabel(""), last6 = new JLabel(""), last7 = new JLabel(""), last8 = new JLabel("");
+		//creates an array list of spaces
 		JLabel[] lasts = {last1, last2, last3, last4, last5, last6, last7, last8};
 		
+		//creates an action listener for each seat button
 		SeatSelected A1L = new SeatSelected(), B1L = new SeatSelected(),
 				C1L = new SeatSelected(), D1L = new SeatSelected(),
 				E1L = new SeatSelected(), F1L = new SeatSelected();
@@ -203,7 +208,7 @@ public class SeatButtons42 extends JPanel
 				C13L = new SeatSelected(), D13L = new SeatSelected(),
 				E13L = new SeatSelected(), F13L = new SeatSelected();
 		
-		
+		//puts all the seat action listeners into an array list
 		SeatSelected[][] listeners = { { A1L, B1L, C1L, D1L, E1L, F1L },
 					{ A2L, B2L, C2L, D2L, E2L, F2L }, { A3L, B3L, C3L, D3L, E3L, F3L },
 					{ A4L, B4L, C4L, D4L, E4L, F4L }, { A5L, B5L, C5L, D5L, E5L, F5L },
@@ -214,6 +219,7 @@ public class SeatButtons42 extends JPanel
 					{ A12L, B12L, C12L, D12L, E12L, F12L },
 					{ A13L, B13L, C13L, D13L, E13L, F13L } };
 		
+		//creates an array list of seat names
 		static String[][] allSeats = {{"A1", "B1", "C1", "D1", "E1", "F1"},
 				{"A2", "B2", "C2", "D2", "E2", "F2"}, {"A3", "B3", "C3", "D3", "E3", "F3"},
 				{"A4", "B4", "C4", "D4", "E4", "F4"}, {"A5", "B5", "C5", "D5", "E5", "F5"},
@@ -224,6 +230,7 @@ public class SeatButtons42 extends JPanel
 				{"A12", "B12", "C12", "D12", "E12", "F12"},
 				{"A13", "B13", "C13", "D13", "E13", "F13"}};
 		
+		//creates a group to put all of the seats in so that the user can choose only one seat at a time
 		ButtonGroup group = new ButtonGroup();
 		
 		public SeatButtons42() {
@@ -255,6 +262,7 @@ public class SeatButtons42 extends JPanel
 			// Put the radio buttons in a column in a panel.
 			JPanel radioPanel = new JPanel(new GridLayout(16, 11));
 
+			//creates the labels for each column header
 			JLabel aisle = new JLabel("   ");
 			JLabel blank = new JLabel("   ");
 			JLabel seatA = new JLabel("  A");
@@ -268,6 +276,7 @@ public class SeatButtons42 extends JPanel
 			JLabel blank3 = new JLabel ("");
 			JLabel price = new JLabel ("Price");
 
+			//adds the labels to the panel
 			radioPanel.add(blank);
 			radioPanel.add(seatA);
 			radioPanel.add(seatB);
@@ -281,6 +290,7 @@ public class SeatButtons42 extends JPanel
 			radioPanel.add(blank3);
 			radioPanel.add(price);
 
+			//creates a label for each row
 			JLabel row1 = new JLabel("Row 1  ");
 			JLabel row2 = new JLabel("Row 2  ");
 			JLabel row3 = new JLabel("Row 3  ");
@@ -295,45 +305,67 @@ public class SeatButtons42 extends JPanel
 			JLabel row12 = new JLabel("Row 12  ");
 			JLabel row13 = new JLabel("Row 13  ");
 			
+			//creates an array list of row labels
 			JLabel[] labels = {row1, row2, row3, row4, row5, row6, row7, row8, row9, row10, row11, row12, row13};
 			
+			//aisle separator labels
 			JLabel a1 = new JLabel(" | "), a2 = new JLabel(" | "), a3 = new JLabel(" | "), a4 = new JLabel(" | "), a5 = new JLabel(" | "), a6 = new JLabel(" | "), a7 = new JLabel(" | "), a8 = new JLabel(" | "), a9 = new JLabel(" | "), a10 = new JLabel(" | "), a11 = new JLabel(" | "), a12 = new JLabel(" | "), a13 = new JLabel(" | ");
+			//data separator labels
 			JLabel b1 = new JLabel(" | "), b2 = new JLabel(" | "), b3 = new JLabel(" | "), b4 = new JLabel(" | "), b5 = new JLabel(" | "), b6 = new JLabel(" | "), b7 = new JLabel(" | "), b8 = new JLabel(" | "), b9 = new JLabel(" | "), b10 = new JLabel(" | "), b11 = new JLabel(" | "), b12 = new JLabel(" | "), b13 = new JLabel(" | ");
+			//class type labels
 			JLabel s1 = new JLabel("First"), s2 = new JLabel("First"), s3 = new JLabel("Business"), s4 = new JLabel("Business"), s5 = new JLabel("Business"), s6 = new JLabel("Business"), s7 = new JLabel("Business"), s8 = new JLabel("Economy"), s9 = new JLabel("Economy"), s10 = new JLabel("Economy"), s11 = new JLabel("Economy"), s12 = new JLabel("Economy"), s13 = new JLabel("Economy");
+			//data separator labels
 			JLabel m1 = new JLabel("  "), m2 = new JLabel("  "), m3 = new JLabel("  "), m4 = new JLabel("  "), m5 = new JLabel("  "), m6 = new JLabel("  "), m7 = new JLabel("  "), m8 = new JLabel("  "), m9 = new JLabel("  "), m10 = new JLabel("  "), m11 = new JLabel("  "), m12 = new JLabel("  "), m13 = new JLabel("  ");
+			//price labels
 			JLabel p1 = new JLabel("$507"), p2 = new JLabel("$507"), p3 = new JLabel("$420"), p4 = new JLabel("$420"), p5 = new JLabel("$420"), p6 = new JLabel("$420"),p7 = new JLabel("$420"), p8 = new JLabel("$250"), p9 = new JLabel("$250"), p10 = new JLabel("$250"), p11 = new JLabel("$250"), p12 = new JLabel("$250"), p13 = new JLabel("$250");
+			//data separator labels
 			JLabel e1 = new JLabel(""), e2 = new JLabel(""), e3 = new JLabel(""), e4 = new JLabel(""), e5 = new JLabel(""), e6 = new JLabel(""), e7 = new JLabel(""), e8 = new JLabel(""), e9 = new JLabel(""), e10 = new JLabel(""), e11 = new JLabel(""), e12 = new JLabel(""), e13 = new JLabel("");
 			
+			//creates an array list of aisle separators
 			JLabel[] aisles = {a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13};
+			//creates an array list of data separators
 			JLabel[] blanks = {b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13};
+			//creates an array list of class types
 			JLabel[] sections = {s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13};
+			//creates an array list of blanks to separate data fields
 			JLabel[] more = {m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13};
+			//creates an array list of prices
 			JLabel[] prices = {p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13};
+			//creates an array list of blank space to place between the seats and buttons
 			JLabel[] extraRow = {e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13};
 			
 			for (int row = 0; row<seats.length; row++)
 				{
 					for (int col = 0; col<seats[0].length+6; col++)
 						{
+							//adds header row of labels to panel
 							if (col==0)
 								radioPanel.add(labels[row]);
+							//adds first three seat radio buttons in a row to panel
 							else if(col>0 && col<4)
 								radioPanel.add(seats[row][col-1]);
+							//adds row labels to panel
 							else if (col==4)
 								radioPanel.add(aisles[row]);
+							//adds last three seat radio buttons in a row to panel
 							else if (col>4 && col<8)
 								radioPanel.add(seats[row][col-2]);
+							//adds data separators between radio buttons to represent aisle in plane to panel
 							else if (col==8)
 								radioPanel.add(blanks[row]);
+							//adds seat class type to panel
 							else if (col==9)
 								radioPanel.add(sections[row]);
+							//adds a blank space to panel to separate class type and prices
 							else if (col==10)
 								radioPanel.add(more[row]);
+							//adds prices of each each to panel
 							else if (col==11)
 								radioPanel.add(prices[row]);
 						}
 				}
 			
+			//adds a blank row to the panel to separate the plane diagram from the checkout, reset, and exit buttons
 			for (int col = 0; col<12; col++)
 			{
 				radioPanel.add(extraRow[col]);
@@ -341,16 +373,22 @@ public class SeatButtons42 extends JPanel
 			
 			for (int col = 0; col<10; col++)
 				{
+					//adds Checkout button to panel
 					if (col==3)
 						radioPanel.add(checkout);
+					//adds Reset button to panel
 					else if (col==6)
 						radioPanel.add(reset);
+					//adds Exit button to panel
 					else if (col==9)
 						radioPanel.add(exit);
+					//adds space labels before the Checkout button
 					else if (col<3)
 						radioPanel.add(lasts[col]);
+					//adds space label between the Checkout button and Reset button
 					else if (col<6)
 						radioPanel.add(lasts[col-1]);
+					//adds space label between the Rest button and Exit button
 					else
 						radioPanel.add(lasts[col-2]);
 				}
@@ -441,7 +479,8 @@ public class SeatButtons42 extends JPanel
 				else if (this==rst)
 				{
 					sfile.delete();
-					System.exit(0);
+					frame.dispose();
+					createAndShowGUI();
 				}
 				else
 					{
